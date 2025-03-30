@@ -2,102 +2,78 @@ import Image from "next/image";
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    <div className="space-y-12">
+      {/* Hero Section */}
+      <section className="text-center py-12">
+        <h1 className="text-4xl font-bold text-blue-600 mb-4">
+          A Machine Learning-Based Model for Predicting Fund Transactions
+        </h1>
+        <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          Developing a predictive model to accurately forecast daily fund subscription and redemption amounts using advanced machine learning techniques.
+        </p>
+      </section>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+      {/* Project Overview */}
+      <section className="bg-gray-50 p-8 rounded-lg">
+        <h2 className="text-2xl font-bold mb-4">Project Overview</h2>
+        <p className="text-gray-700 mb-4">
+          This project aims to develop a sophisticated predictive model that integrates historical time-series data, 
+          fund characteristics, and financial market trends to enhance decision-making capabilities in fund management.
+        </p>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
+          <div className="bg-white p-6 rounded-lg shadow">
+            <h3 className="font-bold mb-2">Data Analysis</h3>
+            <p>Processing historical fund transaction data and market indicators</p>
+          </div>
+          <div className="bg-white p-6 rounded-lg shadow">
+            <h3 className="font-bold mb-2">Model Development</h3>
+            <p>Implementing Transformer, LSTM, and XGBoost models</p>
+          </div>
+          <div className="bg-white p-6 rounded-lg shadow">
+            <h3 className="font-bold mb-2">Evaluation</h3>
+            <p>Testing and comparing model performance in various market conditions</p>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      </section>
+
+      {/* Project Timeline */}
+      <section>
+        <h2 className="text-2xl font-bold mb-6">Project Timeline</h2>
+        <div className="space-y-4">
+          <div className="flex items-center">
+            <div className="w-1/4 text-right pr-4">March 2024</div>
+            <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center text-white">✓</div>
+            <div className="pl-4">Project Initialization and Planning</div>
+          </div>
+          <div className="flex items-center">
+            <div className="w-1/4 text-right pr-4">April 2024</div>
+            <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white">⋯</div>
+            <div className="pl-4">Data Collection and Preprocessing</div>
+          </div>
+          <div className="flex items-center">
+            <div className="w-1/4 text-right pr-4">May 2024</div>
+            <div className="w-8 h-8 bg-gray-300 rounded-full flex items-center justify-center">⋯</div>
+            <div className="pl-4">Model Development and Training</div>
+          </div>
+          <div className="flex items-center">
+            <div className="w-1/4 text-right pr-4">June 2024</div>
+            <div className="w-8 h-8 bg-gray-300 rounded-full flex items-center justify-center">⋯</div>
+            <div className="pl-4">Testing and Optimization</div>
+          </div>
+        </div>
+      </section>
+
+      {/* Key Features */}
+      <section className="bg-blue-50 p-8 rounded-lg">
+        <h2 className="text-2xl font-bold mb-6">Key Features</h2>
+        <ul className="list-disc list-inside space-y-3 text-gray-700">
+          <li>Integration of multiple data sources for comprehensive analysis</li>
+          <li>Advanced machine learning models including Transformer architectures</li>
+          <li>Real-time market trend analysis</li>
+          <li>Interactive visualization of predictions</li>
+          <li>Robust evaluation metrics for model performance</li>
+        </ul>
+      </section>
     </div>
   );
 }
