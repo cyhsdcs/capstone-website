@@ -15,7 +15,7 @@ export default function Documentation() {
                   <p className="text-gray-600 mt-1">Comprehensive project proposal including methodology, timeline, and deliverables</p>
                   <div className="text-sm text-gray-500 mt-2">
                     <span className="mr-4">Format: PDF</span>
-                    <span>Last updated: March 30, 2024</span>
+                    <span>Last updated: April 2, 2025</span>
                   </div>
                 </div>
                 <a 
