@@ -70,13 +70,14 @@ export default function Home() {
         <div className="space-y-4">
           {[
             { date: '2025-03-10', task: 'Project Initialization and Planning' },
-            { date: '2025-03-31', task: 'Data Collection and Exploration' },
-            { date: '2025-04-15', task: 'Feature Engineering' },
-            { date: '2025-04-30', task: 'Base Model Development' },
-            { date: '2025-05-15', task: 'Advanced Model Development' },
-            { date: '2025-05-31', task: 'System Integration and Optimization' },
-            { date: '2025-06-15', task: 'Evaluation and Refinement' },
-            { date: '2025-06-30', task: 'Documentation' }
+            { date: '2025-03-31', task: 'Website Framework Construction' },
+            { date: '2025-04-15', task: 'Data Collection and Exploration' },
+            { date: '2025-04-30', task: 'Feature Engineering' },
+            { date: '2025-05-15', task: 'Base Model Development' },
+            { date: '2025-05-31', task: 'Advanced Model Development' },
+            { date: '2025-06-15', task: 'System Integration and Optimization' },
+            { date: '2025-06-30', task: 'Evaluation and Refinement' },
+            { date: '2025-07-15', task: 'Documentation' }
           ].map((milestone, index, array) => {
             const targetDate = new Date(milestone.date);
             const today = new Date();
