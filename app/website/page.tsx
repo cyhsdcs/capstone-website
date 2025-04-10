@@ -144,6 +144,38 @@ export default function Website() {
           </div>
         </div>
       </section>
+
+      {/* Development Log */}
+      <section className="bg-white p-8 rounded-lg shadow">
+        <h2 className="text-2xl text-cyan-600 font-bold mb-6">Development Log</h2>
+        <div className="space-y-6">
+          <div className="border-l-4 border-cyan-600 pl-4">
+            <h3 className="font-semibold text-lg mb-2">Technology Stack Selection</h3>
+            <ul className="list-disc list-inside text-gray-600 space-y-1">
+              <li>Next.js for server-side rendering and routing</li>
+              <li>React for component-based architecture</li>
+              <li>TypeScript for type safety and robust development</li>
+            </ul>
+          </div>
+
+          <div className="border-l-4 border-cyan-600 pl-4">
+            <h3 className="font-semibold text-lg mb-2">Server Deployment</h3>
+            <div className="space-y-2 text-gray-600">
+              <p>Initial:</p>
+              <ul className="list-disc list-inside space-y-1">
+                <li>Explored options: Alibaba Cloud, Tencent Cloud, AWS</li>
+                <li>Selected Alibaba Cloud for competitive pricing and Hong Kong region availability</li>
+              </ul>
+              <p className="mt-2">Problems:</p>
+              <ul className="list-disc list-inside space-y-1">
+                <li>Started with 1GB RAM server - insufficient for Next.js application</li>
+                <li>Upgraded to 2GB RAM - resolved stability issues</li>
+                <li>Used PM2 for process management</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }
