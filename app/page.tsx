@@ -46,10 +46,9 @@ export default function Home() {
           <div className="bg-white p-6 rounded-lg shadow">
             <h3 className="font-bold mb-2">Model Development</h3>
             <ul className="text-sm space-y-2">
-              <li>• Time series models</li>
-              <li>• Machine learning models</li>
-              <li>• Deep learning models</li>
-              <li>• Ensemble framework</li>
+              <li>• XGBoost</li>
+              <li>• CNN</li>
+              <li>• Transformer</li>
             </ul>
           </div>
           <div className="bg-white p-6 rounded-lg shadow">
@@ -72,12 +71,12 @@ export default function Home() {
             { date: '2025-03-10', task: 'Project Initialization and Planning' },
             { date: '2025-03-31', task: 'Website Framework Construction' },
             { date: '2025-04-15', task: 'Data Collection and Exploration' },
-            { date: '2025-04-30', task: 'Feature Engineering' },
-            { date: '2025-05-15', task: 'Base Model Development' },
-            { date: '2025-05-31', task: 'Advanced Model Development' },
-            { date: '2025-06-15', task: 'System Integration and Optimization' },
-            { date: '2025-06-30', task: 'Evaluation and Refinement' },
-            { date: '2025-07-15', task: 'Documentation' }
+            { date: '2025-05-15', task: 'Feature Engineering' },
+            { date: '2025-06-15', task: 'Base Model Development' },
+            { date: '2025-06-30', task: 'Advanced Model Development' },
+            { date: '2025-07-15', task: 'System Integration and Optimization' },
+            { date: '2025-07-31', task: 'Evaluation and Refinement' },
+            { date: '2025-08-15', task: 'Documentation' }
           ].map((milestone, index, array) => {
             const targetDate = new Date(milestone.date);
             const today = new Date();
