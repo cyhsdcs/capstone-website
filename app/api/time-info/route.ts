@@ -6,7 +6,7 @@ import { parse } from 'csv-parse/sync';
 export async function GET() {
   try {
     // 读取 CSV 文件
-    const filePath = path.join(process.cwd(), 'public/data', 'time_info_final.csv');
+    const filePath = path.join(process.cwd(), 'public/data', 'time_info_final_example.csv');
     const fileContent = fs.readFileSync(filePath, 'utf-8');
 
     // 解析 CSV 数据

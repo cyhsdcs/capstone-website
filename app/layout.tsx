@@ -26,6 +26,7 @@ export default function RootLayout({
             <div className="space-x-6">
               <Link href="/" className="hover:text-blue-200">Home</Link>
               <Link href="/website" className="hover:text-blue-200">Website</Link>
+              <Link href="/dataset" className="hover:text-blue-200">Dataset</Link>
               <Link href="/methodology" className="hover:text-blue-200">Methodology</Link>
               <Link href="/results" className="hover:text-blue-200">Results</Link>
               <Link href="/demo" className="hover:text-blue-200">Demo</Link>
