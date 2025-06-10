@@ -52,8 +52,8 @@ export default function YieldCurveChart() {
     responsive: true,
     plugins: {
       title: {
-        display: true,
-        text: 'Yield Curve Over Time'
+        display: false,
+        text: 'Yield Curve'
       },
       tooltip: {
         callbacks: {

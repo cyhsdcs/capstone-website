@@ -1,4 +1,5 @@
 import YieldCurveChart from '../components/YieldCurveChart';
+import TimeInfoSheet from '../components/TimeInfoSheet';
 
 export default function Methodology() {
   const csvFiles = [
@@ -73,8 +74,13 @@ export default function Methodology() {
       </section>
 
       <section className="bg-white p-8 rounded-lg shadow">
-        <h2 className="text-2xl text-cyan-600 font-bold mb-6">Yield Curve Analysis</h2>
+        <h2 className="text-2xl text-cyan-600 font-bold mb-6">Yield Curve Information</h2>
         <YieldCurveChart />
+      </section>
+
+      <section className="bg-white p-8 rounded-lg shadow">
+        <h2 className="text-2xl text-cyan-600 font-bold mb-6">Time Information</h2>
+        <TimeInfoSheet />
       </section>
 
       {/* Original sections */}
