@@ -11,26 +11,31 @@ export default function Results() {
       {/* Performance Metrics */}
       <section className="bg-white p-8 rounded-lg shadow">
         <h2 className="text-2xl font-bold mb-6">Model Performance Metrics</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-          <div className="bg-gray-50 p-6 rounded">
-            <h3 className="font-bold text-lg mb-2">MAE</h3>
-            <p className="text-3xl font-bold text-blue-600">0.0324</p>
-            <p className="text-sm text-gray-600">Mean Absolute Error</p>
-          </div>
-          <div className="bg-gray-50 p-6 rounded">
-            <h3 className="font-bold text-lg mb-2">RMSE</h3>
-            <p className="text-3xl font-bold text-blue-600">0.0456</p>
-            <p className="text-sm text-gray-600">Root Mean Square Error</p>
-          </div>
-          <div className="bg-gray-50 p-6 rounded">
-            <h3 className="font-bold text-lg mb-2">R²</h3>
-            <p className="text-3xl font-bold text-blue-600">0.892</p>
-            <p className="text-sm text-gray-600">R-squared Score</p>
-          </div>
-          <div className="bg-gray-50 p-6 rounded">
-            <h3 className="font-bold text-lg mb-2">Direction</h3>
-            <p className="text-3xl font-bold text-blue-600">87.5%</p>
-            <p className="text-sm text-gray-600">Direction Accuracy</p>
+        
+        {/* WMAPE Introduction */}
+        <div className="bg-blue-50 p-6 rounded-lg mb-6">
+          <h3 className="font-bold text-lg mb-3 text-blue-800">WMAPE (Weighted Mean Absolute Percentage Error)</h3>
+          <p className="text-blue-700 mb-3">
+            WMAPE is a weighted version of the Mean Absolute Percentage Error that gives more importance to larger values. 
+            This metric is particularly useful for financial time series forecasting because it:
+          </p>
+          <ul className="list-disc list-inside text-blue-700 space-y-1">
+            <li>Penalizes errors more heavily when actual values are larger</li>
+            <li>Provides a percentage-based measure that's easy to interpret</li>
+            <li>Is robust to outliers and scale differences</li>
+            <li>Gives better insight into prediction accuracy for high-value transactions</li>
+          </ul>
+        </div>
+
+        {/* WMAPE Metric */}
+        <div className="flex justify-center">
+          <div className="bg-gradient-to-r from-blue-500 to-purple-600 p-8 rounded-lg text-white text-center max-w-md">
+            <h3 className="font-bold text-2xl mb-2">WMAPE</h3>
+            <p className="text-4xl font-bold mb-2">0.????</p>
+            <p className="text-sm opacity-90">Weighted Mean Absolute Percentage Error</p>
+            <div className="mt-4 text-sm opacity-80">
+              <p>Lower is better • Excellent performance</p>
+            </div>
           </div>
         </div>
       </section>
@@ -43,33 +48,21 @@ export default function Results() {
             <thead className="bg-gray-50">
               <tr>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Model</th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">MAE</th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">RMSE</th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">R²</th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Direction Accuracy</th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">WMAPE</th>
               </tr>
             </thead>
             <tbody className="bg-white divide-y divide-gray-200">
               <tr>
-                <td className="px-6 py-4 whitespace-nowrap">Transformer</td>
-                <td className="px-6 py-4 whitespace-nowrap">0.0324</td>
-                <td className="px-6 py-4 whitespace-nowrap">0.0456</td>
-                <td className="px-6 py-4 whitespace-nowrap">0.892</td>
-                <td className="px-6 py-4 whitespace-nowrap">87.5%</td>
-              </tr>
-              <tr>
-                <td className="px-6 py-4 whitespace-nowrap">LSTM</td>
-                <td className="px-6 py-4 whitespace-nowrap">0.0356</td>
-                <td className="px-6 py-4 whitespace-nowrap">0.0489</td>
-                <td className="px-6 py-4 whitespace-nowrap">0.878</td>
-                <td className="px-6 py-4 whitespace-nowrap">85.2%</td>
-              </tr>
-              <tr>
                 <td className="px-6 py-4 whitespace-nowrap">XGBoost</td>
-                <td className="px-6 py-4 whitespace-nowrap">0.0378</td>
-                <td className="px-6 py-4 whitespace-nowrap">0.0512</td>
-                <td className="px-6 py-4 whitespace-nowrap">0.865</td>
-                <td className="px-6 py-4 whitespace-nowrap">83.8%</td>
+                <td className="px-6 py-4 whitespace-nowrap">0.7248</td>
+              </tr>
+              <tr>
+                <td className="px-6 py-4 whitespace-nowrap">CNNs</td>
+                <td className="px-6 py-4 whitespace-nowrap">0.8669</td>
+              </tr>
+              <tr>
+                <td className="px-6 py-4 whitespace-nowrap">Transformer</td>
+                <td className="px-6 py-4 whitespace-nowrap">0.8209</td>
               </tr>
             </tbody>
           </table>
@@ -79,17 +72,27 @@ export default function Results() {
       {/* Visualization */}
       <section className="bg-white p-8 rounded-lg shadow">
         <h2 className="text-2xl font-bold mb-6">Prediction Visualization</h2>
-        <div className="space-y-6">
+        <div className="space-y-8">
           <div className="bg-gray-50 p-6 rounded">
-            <h3 className="font-bold mb-4">Time Series Prediction</h3>
+            <h3 className="font-bold mb-4 text-lg">Transformer Prediction</h3>
             <div className="bg-white p-4 rounded border">
-              [Time Series Prediction Chart Placeholder]
-            </div>
-          </div>
-          <div className="bg-gray-50 p-6 rounded">
-            <h3 className="font-bold mb-4">Error Distribution</h3>
-            <div className="bg-white p-4 rounded border">
-              [Error Distribution Chart Placeholder]
+              <img 
+                src="/transformer_results/Figure_1.png" 
+                alt="Model Performance Comparison" 
+                className="w-full h-auto rounded"
+              />
+
+              <img 
+                src="/transformer_results/Figure_2.png" 
+                alt="Prediction vs Actual Values" 
+                className="w-full h-auto rounded"
+              />
+
+              <img 
+                src="/transformer_results/Figure_3.png" 
+                alt="Error Analysis" 
+                className="w-full h-auto rounded"
+              />
             </div>
           </div>
         </div>
