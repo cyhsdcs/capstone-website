@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export default function Results() {
   return (
     <div className="space-y-12">
@@ -21,7 +23,7 @@ export default function Results() {
           </p>
           <ul className="list-disc list-inside text-blue-700 space-y-1">
             <li>Penalizes errors more heavily when actual values are larger</li>
-            <li>Provides a percentage-based measure that's easy to interpret</li>
+            <li>Provides a percentage-based measure that is easy to interpret</li>
             <li>Is robust to outliers and scale differences</li>
             <li>Gives better insight into prediction accuracy for high-value transactions</li>
           </ul>
@@ -76,19 +78,19 @@ export default function Results() {
           <div className="bg-gray-50 p-6 rounded">
             <h3 className="font-bold mb-4 text-lg">Transformer Prediction</h3>
             <div className="bg-white p-4 rounded border">
-              <img 
+              <Image 
                 src="/transformer_results/Figure_1.png" 
                 alt="Model Performance Comparison" 
                 className="w-full h-auto rounded"
               />
 
-              <img 
+              <Image 
                 src="/transformer_results/Figure_2.png" 
                 alt="Prediction vs Actual Values" 
                 className="w-full h-auto rounded"
               />
 
-              <img 
+              <Image 
                 src="/transformer_results/Figure_3.png" 
                 alt="Error Analysis" 
                 className="w-full h-auto rounded"
