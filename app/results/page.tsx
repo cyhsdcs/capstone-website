@@ -81,18 +81,24 @@ export default function Results() {
               <Image 
                 src="/transformer_results/Figure_1.png" 
                 alt="Model Performance Comparison" 
+                width={800}
+                height={400}
                 className="w-full h-auto rounded"
               />
 
               <Image 
                 src="/transformer_results/Figure_2.png" 
                 alt="Prediction vs Actual Values" 
+                width={800}
+                height={400}
                 className="w-full h-auto rounded"
               />
 
               <Image 
                 src="/transformer_results/Figure_3.png" 
                 alt="Error Analysis" 
+                width={800}
+                height={400}
                 className="w-full h-auto rounded"
               />
             </div>

@@ -31,7 +31,7 @@ export default function ProductInfoSheet() {
         }
         const jsonData = await response.json();
         // 只取前10条数据
-        setData(jsonData.slice(0, 10));
+        setData(jsonData);
       } catch (err) {
         setError(err instanceof Error ? err.message : 'An error occurred');
       } finally {

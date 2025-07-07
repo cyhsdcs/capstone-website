@@ -1,4 +1,103 @@
+'use client';
+
+import { useState, useEffect } from 'react';
+
 export default function Demo() {
+  const [products, setProducts] = useState<string[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+  const [selectedProduct, setSelectedProduct] = useState('');
+  const [selectedModel, setSelectedModel] = useState('Transformer');
+  const [confirmLoading, setConfirmLoading] = useState(false);
+  const [confirmResult, setConfirmResult] = useState<any>(null);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const response = await fetch('http://47.242.127.80:8000/product');
+        if (!response.ok) {
+          throw new Error('Failed to fetch products');
+        }
+        const data = await response.json();
+        setProducts(data.product);
+      } catch (err) {
+        setError(err instanceof Error ? err.message : 'Failed to load products');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProducts();
+  }, []);
+
+  const getApiPath = () => {
+    switch (selectedModel) {
+      case 'Transformer':
+        return `http://47.242.127.80:8000/transformer/?pid=${selectedProduct}`;
+      case 'LSTM':
+        return `http://47.242.127.80:8000/lstm/?pid=${selectedProduct}`;
+      case 'XGBoost':
+        return `http://47.242.127.80:8000/xgboost/?pid=${selectedProduct}`;
+      case 'CNN':
+        return `http://47.242.127.80:8000/cnn/?pid=${selectedProduct}`;
+      default:
+        return '';
+    }
+  };
+
+  const handleConfirm = async () => {
+    setConfirmLoading(true);
+    setConfirmResult(null);
+    try {
+      const apiPath = getApiPath();
+      if (!apiPath) throw new Error('Invalid model selection');
+      const response = await fetch(apiPath);
+      if (!response.ok) {
+        throw new Error('Request failed');
+      }
+      const data = await response.json();
+      setConfirmResult(data);
+    } catch (err) {
+      setConfirmResult('请求失败');
+    } finally {
+      setConfirmLoading(false);
+    }
+  };
+
+  // 渲染预测结果表格
+  const renderPredictionTable = (result: any) => {
+    if (!result || typeof result !== 'object' || !result.apply_amt_pred) return null;
+    const len = Math.max(
+      result.apply_amt_pred?.length || 0,
+      result.redeem_amt_pred?.length || 0,
+      result.net_in_amt_pred?.length || 0
+    );
+    return (
+      <div className="overflow-x-auto mt-2">
+        <table className="min-w-full border border-gray-200 rounded">
+          <thead className="bg-gray-50">
+            <tr>
+              <th className="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">Date</th>
+              <th className="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">Apply Amount Pred</th>
+              <th className="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">Redeem Amount Pred</th>
+              <th className="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">Net In Amount Pred</th>
+            </tr>
+          </thead>
+          <tbody>
+            {Array.from({ length: len }).map((_, i) => (
+              <tr key={i} className="border-t">
+                <td className="px-4 py-2 whitespace-nowrap">{result.time_list?.[i] ?? '-'}</td>
+                <td className="px-4 py-2 whitespace-nowrap">{result.apply_amt_pred?.[i]?.toFixed(4) ?? '-'}</td>
+                <td className="px-4 py-2 whitespace-nowrap">{result.redeem_amt_pred?.[i]?.toFixed(4) ?? '-'}</td>
+                <td className="px-4 py-2 whitespace-nowrap">{result.net_in_amt_pred?.[i]?.toFixed(4) ?? '-'}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    );
+  };
+
   return (
     <div className="space-y-12">
       <section className="text-center py-8">
@@ -17,122 +116,63 @@ export default function Demo() {
               <label className="block text-sm font-medium text-gray-700 mb-2">
                 Select Model
               </label>
-              <select className="w-full border border-gray-300 rounded-md px-3 py-2">
+              <select
+                className="w-full border border-gray-300 rounded-md px-3 py-2"
+                value={selectedModel}
+                onChange={e => setSelectedModel(e.target.value)}
+              >
                 <option>Transformer</option>
                 <option>LSTM</option>
                 <option>XGBoost</option>
-                <option>Ensemble</option>
-              </select>
-            </div>
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
-                Prediction Horizon
-              </label>
-              <select className="w-full border border-gray-300 rounded-md px-3 py-2">
-                <option>1 Day</option>
-                <option>3 Days</option>
-                <option>1 Week</option>
-                <option>2 Weeks</option>
+                <option>CNN</option>
               </select>
             </div>
           </div>
           <div className="space-y-4">
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
-                Fund Type
+                Product ID
               </label>
-              <select className="w-full border border-gray-300 rounded-md px-3 py-2">
-                <option>Equity Fund</option>
-                <option>Bond Fund</option>
-                <option>Mixed Fund</option>
-                <option>Money Market Fund</option>
-              </select>
+              {loading ? (
+                <div className="w-full border border-gray-300 rounded-md px-3 py-2 bg-gray-50">
+                  Loading products...
+                </div>
+              ) : error ? (
+                <div className="w-full border border-red-300 rounded-md px-3 py-2 bg-red-50 text-red-600">
+                  {error}
+                </div>
+              ) : (
+                <select
+                  className="w-full border border-gray-300 rounded-md px-3 py-2"
+                  value={selectedProduct}
+                  onChange={e => setSelectedProduct(e.target.value)}
+                >
+                  <option value="">Select a product</option>
+                  {products.map((id) => (
+                    <option key={id} value={id}>
+                      {id}
+                    </option>
+                  ))}
+                </select>
+              )}
             </div>
+          </div>
+          <div className="space-y-4">
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
-                Market Condition
-              </label>
-              <select className="w-full border border-gray-300 rounded-md px-3 py-2">
-                <option>Normal</option>
-                <option>High Volatility</option>
-                <option>Bull Market</option>
-                <option>Bear Market</option>
-              </select>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Real-time Prediction */}
-      <section className="bg-white p-8 rounded-lg shadow">
-        <h2 className="text-2xl font-bold mb-6">Real-time Prediction</h2>
-        <div className="space-y-6">
-          <div className="bg-gray-50 p-6 rounded">
-            <h3 className="font-bold mb-4">Prediction Results</h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className="bg-white p-4 rounded border">
-                <h4 className="font-medium text-gray-700 mb-2">Subscription Prediction</h4>
-                <p className="text-2xl font-bold text-blue-600">¥ 1,234,567</p>
-                <p className="text-sm text-gray-500">Predicted for next business day</p>
-              </div>
-              <div className="bg-white p-4 rounded border">
-                <h4 className="font-medium text-gray-700 mb-2">Redemption Prediction</h4>
-                <p className="text-2xl font-bold text-red-600">¥ 987,654</p>
-                <p className="text-sm text-gray-500">Predicted for next business day</p>
-              </div>
-            </div>
-          </div>
-          <div className="bg-gray-50 p-6 rounded">
-            <h3 className="font-bold mb-4">Prediction Visualization</h3>
-            <div className="bg-white p-4 rounded border h-64">
-              [Interactive Chart Placeholder]
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Confidence Metrics */}
-      <section className="bg-white p-8 rounded-lg shadow">
-        <h2 className="text-2xl font-bold mb-6">Prediction Confidence</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <div className="bg-gray-50 p-6 rounded">
-            <h3 className="font-bold mb-2">Confidence Score</h3>
-            <p className="text-3xl font-bold text-green-600">92%</p>
-            <p className="text-sm text-gray-600">Based on historical accuracy</p>
-          </div>
-          <div className="bg-gray-50 p-6 rounded">
-            <h3 className="font-bold mb-2">Error Margin</h3>
-            <p className="text-3xl font-bold text-yellow-600">±3.2%</p>
-            <p className="text-sm text-gray-600">Expected deviation range</p>
-          </div>
-          <div className="bg-gray-50 p-6 rounded">
-            <h3 className="font-bold mb-2">Market Stability</h3>
-            <p className="text-3xl font-bold text-blue-600">Stable</p>
-            <p className="text-sm text-gray-600">Current market condition</p>
-          </div>
-        </div>
-      </section>
-
-      {/* Historical Performance */}
-      <section className="bg-white p-8 rounded-lg shadow">
-        <h2 className="text-2xl font-bold mb-6">Historical Performance</h2>
-        <div className="space-y-6">
-          <div className="bg-gray-50 p-6 rounded">
-            <h3 className="font-bold mb-4">Accuracy Trend</h3>
-            <div className="bg-white p-4 rounded border h-48">
-              [Historical Accuracy Chart Placeholder]
-            </div>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="bg-gray-50 p-6 rounded">
-              <h3 className="font-bold mb-2">Best Performance</h3>
-              <p className="text-lg">96.8% accuracy</p>
-              <p className="text-sm text-gray-600">During stable market conditions</p>
-            </div>
-            <div className="bg-gray-50 p-6 rounded">
-              <h3 className="font-bold mb-2">Challenging Scenarios</h3>
-              <p className="text-lg">82.4% accuracy</p>
-              <p className="text-sm text-gray-600">During high volatility periods</p>
+              <button
+                className="mt-2 px-6 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 disabled:opacity-50"
+                onClick={handleConfirm}
+                disabled={!selectedProduct || confirmLoading}
+              >
+                {confirmLoading ? 'Confirming...' : 'Confirm'}
+              </button>
+              {typeof confirmResult === 'string' ? (
+                <div className="mt-2 text-sm text-gray-700 break-all">
+                  {confirmResult}
+                </div>
+              ) : (
+                renderPredictionTable(confirmResult)
+              )}
             </div>
           </div>
         </div>
