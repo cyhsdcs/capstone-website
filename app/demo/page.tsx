@@ -2,6 +2,14 @@
 
 import { useState, useEffect } from 'react';
 
+// 定义API响应结果的接口类型
+interface PredictionResult {
+  apply_amt_pred?: number[];
+  redeem_amt_pred?: number[];
+  net_in_amt_pred?: number[];
+  time_list?: string[];
+}
+
 export default function Demo() {
   const [products, setProducts] = useState<string[]>([]);
   const [loading, setLoading] = useState(true);
@@ -9,7 +17,7 @@ export default function Demo() {
   const [selectedProduct, setSelectedProduct] = useState('');
   const [selectedModel, setSelectedModel] = useState('Transformer');
   const [confirmLoading, setConfirmLoading] = useState(false);
-  const [confirmResult, setConfirmResult] = useState<any>(null);
+  const [confirmResult, setConfirmResult] = useState<PredictionResult | string | null>(null);
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -58,14 +66,14 @@ export default function Demo() {
       const data = await response.json();
       setConfirmResult(data);
     } catch (err) {
-      setConfirmResult('请求失败');
+      setConfirmResult('请求失败:' + err);
     } finally {
       setConfirmLoading(false);
     }
   };
 
   // 渲染预测结果表格
-  const renderPredictionTable = (result: any) => {
+  const renderPredictionTable = (result: PredictionResult) => {
     if (!result || typeof result !== 'object' || !result.apply_amt_pred) return null;
     const len = Math.max(
       result.apply_amt_pred?.length || 0,
@@ -170,9 +178,9 @@ export default function Demo() {
                 <div className="mt-2 text-sm text-gray-700 break-all">
                   {confirmResult}
                 </div>
-              ) : (
+              ) : confirmResult && typeof confirmResult === 'object' ? (
                 renderPredictionTable(confirmResult)
-              )}
+              ) : null}
             </div>
           </div>
         </div>
