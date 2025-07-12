@@ -14,29 +14,77 @@ export default function Results() {
       <section className="bg-white p-8 rounded-lg shadow">
         <h2 className="text-2xl font-bold mb-6">Model Performance Metrics</h2>
         
-        {/* WMAPE Introduction */}
-        <div className="bg-blue-50 p-6 rounded-lg mb-6">
-          <h3 className="font-bold text-lg mb-3 text-blue-800">WMAPE (Weighted Mean Absolute Percentage Error)</h3>
-          <p className="text-blue-700 mb-3">
-            WMAPE is a weighted version of the Mean Absolute Percentage Error that gives more importance to larger values. 
-            This metric is particularly useful for financial time series forecasting because it:
-          </p>
-          <ul className="list-disc list-inside text-blue-700 space-y-1">
-            <li>Penalizes errors more heavily when actual values are larger</li>
-            <li>Provides a percentage-based measure that is easy to interpret</li>
-            <li>Is robust to outliers and scale differences</li>
-            <li>Gives better insight into prediction accuracy for high-value transactions</li>
-          </ul>
+        {/* Metrics Introduction */}
+        <div className="grid md:grid-cols-3 gap-6 mb-6">
+          {/* WMAPE Introduction */}
+          <div className="bg-blue-50 p-6 rounded-lg">
+            <h3 className="font-bold text-lg mb-3 text-blue-800">WMAPE (Weighted Mean Absolute Percentage Error)</h3>
+            <p className="text-blue-700 mb-3">
+              WMAPE is a weighted version of the Mean Absolute Percentage Error that gives more importance to larger values. 
+              This metric is particularly useful for financial time series forecasting because it:
+            </p>
+            <ul className="list-disc list-inside text-blue-700 space-y-1">
+              <li>Penalizes errors more heavily when actual values are larger</li>
+              <li>Provides a percentage-based measure that is easy to interpret</li>
+              <li>Is robust to outliers and scale differences</li>
+              <li>Gives better insight into prediction accuracy for high-value transactions</li>
+            </ul>
+          </div>
+          {/* MAE Introduction */}
+          <div className="bg-green-50 p-6 rounded-lg">
+            <h3 className="font-bold text-lg mb-3 text-green-800">MAE (Mean Absolute Error)</h3>
+            <p className="text-green-700 mb-3">
+              MAE measures the average magnitude of errors in a set of predictions, without considering their direction. It is calculated as the average absolute difference between predicted and actual values.
+            </p>
+            <ul className="list-disc list-inside text-green-700 space-y-1">
+              <li>Simple to understand and interpret</li>
+              <li>Treats all errors equally, regardless of their direction</li>
+              <li>Useful for understanding the typical size of prediction errors</li>
+              <li>Not sensitive to outliers</li>
+            </ul>
+          </div>
+          {/* MSE Introduction */}
+          <div className="bg-yellow-50 p-6 rounded-lg">
+            <h3 className="font-bold text-lg mb-3 text-yellow-800">MSE (Mean Squared Error)</h3>
+            <p className="text-yellow-700 mb-3">
+              MSE measures the average of the squares of the errors—that is, the average squared difference between the estimated values and the actual value. It is more sensitive to large errors than MAE.
+            </p>
+            <ul className="list-disc list-inside text-yellow-700 space-y-1">
+              <li>Penalizes larger errors more than smaller ones</li>
+              <li>Useful for highlighting significant prediction mistakes</li>
+              <li>Commonly used in regression and forecasting tasks</li>
+              <li>Can be influenced by outliers</li>
+            </ul>
+          </div>
         </div>
 
-        {/* WMAPE Metric */}
-        <div className="flex justify-center">
-          <div className="bg-gradient-to-r from-blue-500 to-purple-600 p-8 rounded-lg text-white text-center max-w-md">
+        {/* WMAPE, MAE, MSE Metrics */}
+        <div className="flex flex-wrap justify-center gap-8 mb-8">
+          {/* WMAPE Metric */}
+          <div className="bg-gradient-to-r from-blue-500 to-purple-600 p-8 rounded-lg text-white text-center max-w-xs min-w-[220px]">
             <h3 className="font-bold text-2xl mb-2">WMAPE</h3>
-            <p className="text-4xl font-bold mb-2">0.????</p>
+            <p className="text-4xl font-bold mb-2">?.????%</p>
             <p className="text-sm opacity-90">Weighted Mean Absolute Percentage Error</p>
             <div className="mt-4 text-sm opacity-80">
               <p>Lower is better • Excellent performance</p>
+            </div>
+          </div>
+          {/* MAE Metric */}
+          <div className="bg-gradient-to-r from-green-400 to-green-600 p-8 rounded-lg text-white text-center max-w-xs min-w-[220px]">
+            <h3 className="font-bold text-2xl mb-2">MAE</h3>
+            <p className="text-4xl font-bold mb-2">?.????</p>
+            <p className="text-sm opacity-90">Mean Absolute Error</p>
+            <div className="mt-4 text-sm opacity-80">
+              <p>Lower is better</p>
+            </div>
+          </div>
+          {/* MSE Metric */}
+          <div className="bg-gradient-to-r from-yellow-400 to-yellow-600 p-8 rounded-lg text-white text-center max-w-xs min-w-[220px]">
+            <h3 className="font-bold text-2xl mb-2">MSE</h3>
+            <p className="text-4xl font-bold mb-2">??.????</p>
+            <p className="text-sm opacity-90">Mean Squared Error</p>
+            <div className="mt-4 text-sm opacity-80">
+              <p>Lower is better</p>
             </div>
           </div>
         </div>
@@ -51,20 +99,34 @@ export default function Results() {
               <tr>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Model</th>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">WMAPE</th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">MAE</th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">MSE</th>
               </tr>
             </thead>
             <tbody className="bg-white divide-y divide-gray-200">
               <tr>
                 <td className="px-6 py-4 whitespace-nowrap">XGBoost</td>
-                <td className="px-6 py-4 whitespace-nowrap">0.7248</td>
+                <td className="px-6 py-4 whitespace-nowrap">0.6155</td>
+                <td className="px-6 py-4 whitespace-nowrap">2.2115</td>
+                <td className="px-6 py-4 whitespace-nowrap">23.8405</td>
               </tr>
               <tr>
                 <td className="px-6 py-4 whitespace-nowrap">CNNs</td>
-                <td className="px-6 py-4 whitespace-nowrap">0.8669</td>
+                <td className="px-6 py-4 whitespace-nowrap">0.7581</td>
+                <td className="px-6 py-4 whitespace-nowrap">2.7238</td>
+                <td className="px-6 py-4 whitespace-nowrap">31.9216</td>
               </tr>
               <tr>
                 <td className="px-6 py-4 whitespace-nowrap">Transformer</td>
-                <td className="px-6 py-4 whitespace-nowrap">0.8209</td>
+                <td className="px-6 py-4 whitespace-nowrap">0.7796</td>
+                <td className="px-6 py-4 whitespace-nowrap">2.6706</td>
+                <td className="px-6 py-4 whitespace-nowrap">21.5467</td>
+              </tr>
+              <tr>
+                <td className="px-6 py-4 whitespace-nowrap">LSTM+Attention</td>
+                <td className="px-6 py-4 whitespace-nowrap">0.6282</td>
+                <td className="px-6 py-4 whitespace-nowrap">2.1521</td>
+                <td className="px-6 py-4 whitespace-nowrap">16.2097</td>
               </tr>
             </tbody>
           </table>
@@ -233,7 +295,7 @@ export default function Results() {
       </section>
 
       {/* Analysis */}
-      <section className="bg-white p-8 rounded-lg shadow">
+      {/* <section className="bg-white p-8 rounded-lg shadow">
         <h2 className="text-2xl font-bold mb-6">Analysis & Insights</h2>
         <div className="space-y-4">
           <div className="bg-gray-50 p-6 rounded">
@@ -255,7 +317,7 @@ export default function Results() {
             </ul>
           </div>
         </div>
-      </section>
+      </section> */}
     </div>
   );
 } 
