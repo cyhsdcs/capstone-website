@@ -76,10 +76,10 @@ export default function Results() {
         <h2 className="text-2xl font-bold mb-6">Prediction Visualization</h2>
         <div className="space-y-8">
           <div className="bg-gray-50 p-6 rounded">
-            <h3 className="font-bold mb-4 text-lg">Transformer Prediction</h3>
+            <h3 className="font-bold mb-4 text-lg">XGBoost Prediction</h3>
             <div className="bg-white p-4 rounded border">
               <Image 
-                src="/transformer_results/Figure_1.png" 
+                src="https://www.helloimg.com/i/2025/07/12/6871d0c38f280.png" 
                 alt="Model Performance Comparison" 
                 width={800}
                 height={400}
@@ -87,7 +87,7 @@ export default function Results() {
               />
 
               <Image 
-                src="/transformer_results/Figure_2.png" 
+                src="https://www.helloimg.com/i/2025/07/12/6871d0c404ba4.png" 
                 alt="Prediction vs Actual Values" 
                 width={800}
                 height={400}
@@ -95,11 +95,137 @@ export default function Results() {
               />
 
               <Image 
-                src="/transformer_results/Figure_3.png" 
+                src="https://www.helloimg.com/i/2025/07/12/6871d0c3aa7e3.png" 
                 alt="Error Analysis" 
                 width={800}
                 height={400}
                 className="w-full h-auto rounded"
+              />
+            </div>
+          </div>
+        </div>
+
+        <br></br>
+        <br></br>
+        <br></br>
+
+        <div className="space-y-8">
+          <div className="bg-gray-50 p-6 rounded">
+            <h3 className="font-bold mb-4 text-lg">CNN Prediction</h3>
+            <div className="bg-white p-4 rounded border">
+              <Image 
+                src="https://www.helloimg.com/i/2025/07/12/6871d18f4699f.png" 
+                alt="Model Performance Comparison" 
+                width={800}
+                height={400}
+                className="w-full h-auto rounded"
+              />
+
+              <Image 
+                src="https://www.helloimg.com/i/2025/07/12/6871d18f15f67.png" 
+                alt="Prediction vs Actual Values" 
+                width={800}
+                height={400}
+                className="w-full h-auto rounded"
+              />
+
+              <Image 
+                src="https://www.helloimg.com/i/2025/07/12/6871d1998cd8d.png" 
+                alt="Error Analysis" 
+                width={800}
+                height={400}
+                className="w-full h-auto rounded"
+              />
+
+              <Image 
+                src="https://www.helloimg.com/i/2025/07/12/6871d18fcc069.png" 
+                alt="Error Analysis" 
+                width={800}
+                height={400}
+                className="w-full h-auto rounded"
+              />
+            </div>
+          </div>
+        </div>
+
+        <br></br>
+        <br></br>
+        <br></br>
+        
+        <div className="space-y-8">
+          <div className="bg-gray-50 p-6 rounded">
+            <h3 className="font-bold mb-4 text-lg">Transformer Prediction</h3>
+            <div className="bg-white p-4 rounded border">
+              <Image 
+                src="https://www.helloimg.com/i/2025/07/12/6871cebe60e44.png" 
+                alt="Model Performance Comparison" 
+                width={800}
+                height={400}
+                className="w-full h-auto rounded"
+              />
+
+              <Image 
+                src="https://www.helloimg.com/i/2025/07/12/6871cebe6ad96.png" 
+                alt="Prediction vs Actual Values" 
+                width={800}
+                height={400}
+                className="w-full h-auto rounded"
+              />
+
+              <Image 
+                src="https://www.helloimg.com/i/2025/07/12/6871cebe7352a.png" 
+                alt="Error Analysis" 
+                width={800}
+                height={400}
+                className="w-full h-auto rounded"
+              />
+
+              <Image 
+                src="https://www.helloimg.com/i/2025/07/12/6871cecc07efb.png" 
+                alt="Error Analysis" 
+                width={800}
+                height={400}
+                className="w-full h-auto rounded"
+              />
+            </div>
+          </div>
+        </div>
+
+        <br></br>
+        <br></br>
+        <br></br>
+
+        <div className="space-y-8">
+          <div className="bg-gray-50 p-6 rounded">
+            <h3 className="font-bold mb-4 text-lg">LSTM Prediction</h3>
+            <div className="bg-white p-4 rounded border">
+              <Image 
+                src="https://www.helloimg.com/i/2025/07/12/6871ca3677fe2.png" 
+                alt="LSTM Loss" 
+                width={800} 
+                height={400} 
+                className="w-full h-auto rounded" 
+              />
+              <Image 
+                src="https://www.helloimg.com/i/2025/07/12/6871ca36b740c.png" 
+                alt="LSTM Loss" 
+                width={800} 
+                height={400} 
+                className="w-full h-auto rounded" 
+              />
+              <Image 
+                src="https://www.helloimg.com/i/2025/07/12/6871ca36778bb.png" 
+                alt="LSTM Loss" 
+                width={800} 
+                height={400} 
+                className="w-full h-auto rounded" 
+              />
+              <Image 
+                src="https://www.helloimg.com/i/2025/07/12/6871ca36863f9.png" 
+                alt="LSTM Loss" 
+                width={800} 
+                height={400} 
+                className="w-full h-auto rounded" 
               />
             </div>
           </div>
