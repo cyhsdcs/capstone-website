@@ -106,8 +106,8 @@ export default function Results() {
             <tbody className="bg-white divide-y divide-gray-200">
               <tr>
                 <td className="px-6 py-4 whitespace-nowrap">XGBoost</td>
-                <td className="px-6 py-4 whitespace-nowrap">0.6155</td>
-                <td className="px-6 py-4 whitespace-nowrap">2.2115</td>
+                <td className="px-6 py-4 whitespace-nowrap">0.6455</td>
+                <td className="px-6 py-4 whitespace-nowrap">2.3115</td>
                 <td className="px-6 py-4 whitespace-nowrap">23.8405</td>
               </tr>
               <tr>
