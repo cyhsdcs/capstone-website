@@ -75,8 +75,7 @@ export default function Home() {
             { date: '2025-06-15', task: 'Base Model Development' },
             { date: '2025-06-30', task: 'Advanced Model Development' },
             { date: '2025-07-15', task: 'System Integration and Optimization' },
-            { date: '2025-07-31', task: 'Evaluation and Refinement' },
-            { date: '2025-08-15', task: 'Documentation' }
+            { date: '2025-07-31', task: 'Documentation' }
           ].map((milestone, index, array) => {
             const targetDate = new Date(milestone.date);
             const today = new Date();
