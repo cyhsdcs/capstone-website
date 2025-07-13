@@ -49,6 +49,7 @@ export default function Home() {
               <li>• XGBoost</li>
               <li>• CNN</li>
               <li>• Transformer</li>
+              <li>• LSTM+Attention</li>
             </ul>
           </div>
           <div className="bg-white p-6 rounded-lg shadow">

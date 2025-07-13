@@ -258,7 +258,7 @@ export default function Methodology() {
           <div className="bg-gray-50 p-6 rounded">
             <h3 className="font-bold mb-2">Transformer</h3>
             <p className="mb-4">
-              The Transformer architecture, pioneered by the paper <em>"Attention is All You Need"</em>, represents a paradigm shift in sequence modeling by exclusively utilizing attention mechanisms. Unlike traditional recurrent (RNN) and convolutional (CNN) structures, the Transformer employs self-attention to model interdependencies between sequence elements, enabling efficient and effective long-range dependency modeling.
+              The Transformer architecture, pioneered by the paper <em>&quot;Attention is All You Need&quot;</em>, represents a paradigm shift in sequence modeling by exclusively utilizing attention mechanisms. Unlike traditional recurrent (RNN) and convolutional (CNN) structures, the Transformer employs self-attention to model interdependencies between sequence elements, enabling efficient and effective long-range dependency modeling.
             </p>
             <div className="mb-4">
               <strong>Core Components:</strong>
@@ -269,7 +269,7 @@ export default function Methodology() {
               </ul>
             </div>
             <p className="mb-4">
-              These elements collectively empower the model to capture complex temporal patterns and long-range dependencies—capabilities critically aligned with financial time-series forecasting requirements. Compared to RNNs/LSTMs, the Transformer's self-attention mechanism achieves constant-time complexity for modeling distant relationships, resolving the vanishing gradient problem and enabling efficient processing of long sequences. Sinusoidal positional embeddings encode order information, while multi-head attention enhances representational capacity.
+              These elements collectively empower the model to capture complex temporal patterns and long-range dependencies—capabilities critically aligned with financial time-series forecasting requirements. Compared to RNNs/LSTMs, the Transformer&apos;s self-attention mechanism achieves constant-time complexity for modeling distant relationships, resolving the vanishing gradient problem and enabling efficient processing of long sequences. Sinusoidal positional embeddings encode order information, while multi-head attention enhances representational capacity.
             </p>
             <div className="mb-4">
               <strong>Domain-Specific Implementation:</strong>
@@ -337,12 +337,12 @@ export default function Methodology() {
                     <li>Context-dependent attention weights highlighting critical timesteps</li>
                     <li>A context vector via weighted summation of value states</li>
                     <li>Versus standalone LSTM: Dynamically focuses on salient market events during prediction</li>
-                    <li>Versus pure attention models: Inherits LSTM's inherent temporal structure modeling</li>
+                    <li>Versus pure attention models: Inherits LSTM&apos;s inherent temporal structure modeling</li>
                   </ul>
                 </li>
                 <li>
                   <strong>Feature Fusion</strong><br/>
-                  The context vector merges with the LSTM's final hidden state through concatenation or additive fusion. This synthesis:
+                  The context vector merges with the LSTM&apos;s final hidden state through concatenation or additive fusion. This synthesis:
                   <ul className="list-disc list-inside ml-6">
                     <li>Preserves global sequence semantics from LSTM</li>
                     <li>Amplifies critical temporal features via attention weighting</li>
